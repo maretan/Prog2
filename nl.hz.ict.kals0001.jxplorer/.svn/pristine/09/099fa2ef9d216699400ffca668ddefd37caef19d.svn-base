@@ -1,0 +1,46 @@
+package nl.hz.ict.kals0001.jxplorer;
+
+public class JXplorer {
+	
+	private JXploreFile currentFile;
+	
+	public JXplorer()
+	{
+		//TODO: implementeren
+	}
+	
+	public JXplorer(JXploreFile file)
+	{
+		//TODO: implementeren
+	}
+	
+	public static void main(String[] args)
+	{
+		//TODO: implementeren
+	}
+
+	public JXploreFile getCurrentFile()
+	{
+		return currentFile;
+	}
+		
+	public void setCurrentFile(JXploreFile newFile) 
+	{
+		currentFile = newFile;
+	}
+	
+	public void printName(JXploreFile file)
+	{
+		//TODO: implementeren
+	}
+	
+	public void printSubFiles(JXploreFile file)
+	{
+		//TODO: implementeren
+	}
+	
+	public void printSubFolders(JXploreFile file)
+	{
+		//TODO: implementeren
+	}
+}

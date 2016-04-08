@@ -1,0 +1,91 @@
+package nl.hz.ict.kals0001.jxplorer;
+import java.io.File;
+import javax.swing.Icon;
+
+public class JXploreFile {
+	
+	private File file;
+	
+	public JXploreFile()
+	{
+		//FIXME zo niet platformonafhankelijk. Gebruik FileSystemView hiervoor
+		file = new File("D:" + File.separator);
+	}
+	
+	public JXploreFile(String s)
+	{
+		file = new File(s);
+		//TODO beter om geen nieuwe bestanden aan te maken op je HDD
+		file.createNewFile();
+		//TODO: fix the exception.
+	}
+	
+	public JXploreFile(File file)
+	{
+		this.file = file;
+	}
+	
+	public String getName()
+	{
+		return file.getName();
+	}
+	
+	public String getPath()
+	{
+		return file.getPath();
+	}
+	
+	public Icon getIcon()
+	{
+		//TODO: Implementate
+		return null;
+	}
+	
+	public JXploreFile[] getSubFiles()
+	{
+		JXploreFile[] subFiles;
+		if(file.listFiles() == null)
+		{
+			subFiles = new JXploreFile[0];
+		}
+		else
+		{
+			File[] files = file.listFiles();
+			subFiles = new JXploreFile[files.length];
+			int i = 0;
+			for(File f : files)
+			{
+				subFiles[i] = new JXploreFile(f);
+				i++;
+			}
+		}
+		return subFiles;
+	}
+	
+	public JXploreFile[] getSubFolders()
+	{
+		JXploreFile[] subFiles;
+		if(file.listFiles() == null)
+		{
+			subFiles = new JXploreFile[0];
+		}
+		else
+		{
+			File[] files = file.listFiles();
+			subFiles = new JXploreFile[files.length];
+			int i = 0;
+			for(File f : files)
+			{
+				if(f.isDirectory())
+				{
+					subFiles[i] = new JXploreFile(f);
+					i++;
+				}
+			}
+		}
+		return subFiles;
+		//TODO: array created is most of the time bigger than needed, need to fix that.
+	
+	}
+	
+}

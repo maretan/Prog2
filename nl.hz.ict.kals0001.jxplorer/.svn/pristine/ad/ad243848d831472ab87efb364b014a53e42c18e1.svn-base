@@ -1,0 +1,88 @@
+package nl.hz.ict.kals0001.jxplorer;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+// TODO Ziet er allemaal netjes uit, maar nu de achterstand inhalen
+public class JXplorer {
+	
+	private JXploreFile currentFile;
+	
+	public JXplorer()
+	{
+		currentFile = new JXploreFile();
+	}
+	
+	public JXplorer(JXploreFile file)
+	{
+		currentFile = file;
+	}
+	
+	public static void main(String[] args)
+	{
+		JXplorer jxplorer = new JXplorer();
+		jxplorer.buildGUI();
+	}	
+
+	public JXploreFile getCurrentFile()
+	{
+		return currentFile;
+	}
+		
+	public void setCurrentFile(JXploreFile newFile) 
+	{
+		currentFile = newFile;
+	}
+	
+	public void buildGUI()
+	{
+		JXAddressView gui = new JXAddressView();
+		gui.setData(this);
+		JFrame mainGUI = new JFrame();
+		JPanel p = gui.getViewPanel();
+		mainGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainGUI.setContentPane(p);
+		mainGUI.pack();
+		mainGUI.setVisible(true);
+	}
+	
+	public void printName(JXploreFile file)
+	{
+		System.out.println(currentFile.getName());
+	}
+	
+	public void printSubFiles(JXploreFile file)
+	{
+		JXploreFile[] subFiles = currentFile.getSubFiles();
+		if (subFiles.length == 0)
+		{
+			System.out.println("this file is not a directory or doesnt contain any files");
+		}
+		else
+		{
+			String files = "the files in this directory are: ";
+			for(JXploreFile f : subFiles)
+			{
+				files += f.getName()+ "\n";
+			}
+			System.out.println(files);
+		}
+	}
+	
+	public void printSubFolders(JXploreFile file)
+	{
+		JXploreFile[] subFolders = currentFile.getSubFolders();
+		if (subFolders.length == 0)
+		{
+			System.out.println("this file is not a directory or doesnt contain any folders");
+		}
+		else
+		{
+			String folders = "the folders in this directory are: ";
+			for(JXploreFile f : subFolders)
+			{
+				folders += f.getName()+ "\n";
+			}
+			System.out.println(folders);
+		}
+	}
+}

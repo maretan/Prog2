@@ -1,0 +1,54 @@
+package nl.hz.ict.kals0001.jxplorer;
+import java.io.File;
+import javax.swing.Icon;
+
+public class JXploreFile {
+	
+	private File file;
+	
+	public JXploreFile()
+	{
+		//TODO: Implementeren
+	}
+	
+	public JXploreFile(String s)
+	{
+		//TODO: Implementeren
+	}
+	
+	public JXploreFile(File f)
+	{
+		//TODO: Implementeren
+	}
+	
+	public String getName()
+	{
+		//TODO: Implementeren
+		return null;
+	}
+	
+	public String getPath()
+	{
+		//TODO: Implementeren
+		return null;
+	}
+	
+	public Icon getIcon()
+	{
+		//TODO: Implementeren
+		return null;
+	}
+	
+	public JXploreFile[] getSubFiles()
+	{
+		//TODO: Implementeren
+		return null;
+	}
+	
+	public JXploreFile[] getSubFolders()
+	{
+		//TODO: Implementeren
+		return null;
+	}
+	
+}
