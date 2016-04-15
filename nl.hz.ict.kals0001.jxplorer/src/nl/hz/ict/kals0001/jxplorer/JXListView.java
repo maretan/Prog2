@@ -61,7 +61,7 @@ public class JXListView {
 		    label.setText(data.getName());
 		    label.setIcon(data.getIcon());
 		   }
-		   return result;
+		   return label;
 		  }
 
 		 }

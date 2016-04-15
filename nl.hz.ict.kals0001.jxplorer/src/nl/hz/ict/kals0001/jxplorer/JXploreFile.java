@@ -38,6 +38,7 @@ public class JXploreFile {
 		Icon i = FileSystemView.getFileSystemView().getSystemIcon(file);
 		return i;
 	}
+	
 
 	public JXploreFile[] getSubFiles()
 	{

@@ -18,7 +18,7 @@ public class JXAddressView implements ActionListener
 	public JXAddressView()
 	{
 		viewPanel = new JPanel();
-		addressLabel = new JLabel("Address");
+		addressLabel = new JLabel("Adress");
 		addressTextField = new JTextField("", 20);
 		goButton = new JButton("Go");
 		goButton.addActionListener(this);
@@ -43,7 +43,7 @@ public class JXAddressView implements ActionListener
 		this.data = data;
 	}
 	
-	public void actionPerformed(ActionEvent e)
+	public void actionPerformed(ActionEvent e) //TODO: exceptions
 	{
 		String t = addressTextField.getText();
 		JXploreFile file = new JXploreFile(t);
