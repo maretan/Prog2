@@ -1,9 +1,10 @@
 package nl.hz.ict.kals0001.jxplorer;
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-import javax.swing.JLabel;
-import java.awt.BorderLayout;
 
 
 public class JXplorer {

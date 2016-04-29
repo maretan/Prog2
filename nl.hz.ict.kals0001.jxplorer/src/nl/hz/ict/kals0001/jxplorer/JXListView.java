@@ -5,9 +5,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.DefaultListCellRenderer;
 import java.awt.Component;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
-public class JXListView {
+public class JXListView  implements MouseListener{
 
 	private JPanel viewPanel;
 	private JList<JXploreFile> fileList;
@@ -41,8 +43,42 @@ public class JXListView {
 	public void createList() {
 		fileList.setListData(data.getCurrentFile().getSubFiles());
 		fileList.setCellRenderer(renderer);
+		fileList.addMouseListener(this);
 	}
 	
+	//Mouselistenerevents
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if (e.getClickCount() == 2)	
+		{
+			data.setCurrentFile(fileList.getSelectedValue());
+			data.updateGUI();
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	 public class JXListCellRenderer extends DefaultListCellRenderer {
 
@@ -65,4 +101,7 @@ public class JXListView {
 		  }
 
 		 }
+
+
+	
 }
