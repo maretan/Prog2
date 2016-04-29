@@ -54,18 +54,16 @@ public class JXplorer {
 		//Getting the AdressViewGui + Data
 		JXAddressView adress = new JXAddressView();
 		adress.setData(this);
-		JPanel p = adress.getViewPanel();
 		
 		//Getting the ListViewGui + Data
 		JXListView list = new JXListView();
 		list.setData(this);
 		list.createList();
-		JPanel q = list.getViewPanel();
 		
 		//Adding the Panels in the BorderLayout
-		contentPanel.add(p, BorderLayout.NORTH);
+		contentPanel.add(adress, BorderLayout.NORTH);
 		contentPanel.add(new JLabel("JXStatus"), BorderLayout.SOUTH);
-		splitPane = new JSplitPane(1, new JLabel("JXTreeView"), q);
+		splitPane = new JSplitPane(1, new JLabel("JXTreeView"), list);
 		contentPanel.add(splitPane, BorderLayout.CENTER);
 		
 		//Finishing the GUI

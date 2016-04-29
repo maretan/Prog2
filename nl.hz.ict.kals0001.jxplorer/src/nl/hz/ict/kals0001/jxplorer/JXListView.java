@@ -9,25 +9,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 
-public class JXListView  implements MouseListener{
+public class JXListView extends JPanel implements MouseListener{
 
-	private JPanel viewPanel;
+	private static final long serialVersionUID = 1L;
 	private JList<JXploreFile> fileList;
 	private JXplorer data;
 	private JScrollPane scrollPane;
 	private JXListCellRenderer renderer;
 	
 	public JXListView(){
-		viewPanel = new JPanel();
 		fileList = new JList<JXploreFile>();
 		scrollPane = new JScrollPane(fileList);
 		renderer = new JXListCellRenderer();
-		viewPanel.add(scrollPane);
-	}
-	
-	public JPanel getViewPanel()
-	{
-		return viewPanel;
+		this.add(scrollPane);
 	}
 	
 	public JXplorer getData()
