@@ -60,10 +60,17 @@ public class JXplorer {
 		list.setData(this);
 		list.createList();
 		
+		//Getting the TreeviewGui + Data
+		JXTreeView tree = new JXTreeView();
+		tree.setData(this);
+		tree.createTree();
+		//todo add methods to create tree.
+		
+		
 		//Adding the Panels in the BorderLayout
 		contentPanel.add(adress, BorderLayout.NORTH);
 		contentPanel.add(new JLabel("JXStatus"), BorderLayout.SOUTH);
-		splitPane = new JSplitPane(1, new JLabel("JXTreeView"), list);
+		splitPane = new JSplitPane(1, tree, list);
 		contentPanel.add(splitPane, BorderLayout.CENTER);
 		
 		//Finishing the GUI

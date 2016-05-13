@@ -1,10 +1,12 @@
 package nl.hz.ict.kals0001.jxplorer;
 import java.io.File;
+import java.util.Enumeration;
 
 import javax.swing.Icon;
 import javax.swing.filechooser.FileSystemView;
+import javax.swing.tree.TreeNode;
 
-public class JXploreFile {
+public class JXploreFile implements TreeNode {
 	
 	private File file;
 	
@@ -91,5 +93,47 @@ public class JXploreFile {
 			}
 		}
 		return subFolders;	
+	}
+
+	@Override
+	public Enumeration children() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean getAllowsChildren() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public TreeNode getChildAt(int arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getChildCount() {
+		int i = getSubFiles().length;
+		return i;
+	}
+
+	@Override
+	public int getIndex(TreeNode arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public TreeNode getParent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isLeaf() {
+		// TODO Auto-generated method stub
+		return false;
 	}	
 }
