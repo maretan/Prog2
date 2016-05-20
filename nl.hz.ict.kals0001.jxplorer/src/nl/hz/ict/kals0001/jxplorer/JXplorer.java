@@ -2,7 +2,6 @@ package nl.hz.ict.kals0001.jxplorer;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
@@ -66,10 +65,14 @@ public class JXplorer {
 		tree.createTree();
 		//todo add methods to create tree.
 		
-		
+		//Getting the StatusViewGUI + Data
+		JXStatusView status = new JXStatusView();
+		status.setData(this);
+		status.createStatus();
+				
 		//Adding the Panels in the BorderLayout
 		contentPanel.add(adress, BorderLayout.NORTH);
-		contentPanel.add(new JLabel("JXStatus"), BorderLayout.SOUTH);
+		contentPanel.add(status, BorderLayout.SOUTH);
 		splitPane = new JSplitPane(1, tree, list);
 		contentPanel.add(splitPane, BorderLayout.CENTER);
 		

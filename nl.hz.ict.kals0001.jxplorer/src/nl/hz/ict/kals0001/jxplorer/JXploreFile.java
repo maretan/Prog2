@@ -103,14 +103,14 @@ public class JXploreFile implements TreeNode {
 
 	@Override
 	public boolean getAllowsChildren() {
-		// TODO Auto-generated method stub
-		return false;
+		// always allow children for now
+		return true;
 	}
 
 	@Override
 	public TreeNode getChildAt(int arg0) {
-		// TODO Auto-generated method stub
-		return null;
+		TreeNode x = getSubFiles()[arg0];
+		return x;
 	}
 
 	@Override
@@ -121,7 +121,6 @@ public class JXploreFile implements TreeNode {
 
 	@Override
 	public int getIndex(TreeNode arg0) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -133,7 +132,13 @@ public class JXploreFile implements TreeNode {
 
 	@Override
 	public boolean isLeaf() {
-		// TODO Auto-generated method stub
-		return false;
+		if (getSubFiles().length == 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}	
 }
