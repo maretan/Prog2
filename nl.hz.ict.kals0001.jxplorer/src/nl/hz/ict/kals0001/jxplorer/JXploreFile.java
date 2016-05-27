@@ -96,38 +96,59 @@ public class JXploreFile implements TreeNode {
 	}
 
 	@Override
-	public Enumeration children() {
-		// TODO Auto-generated method stub
-		return null;
+	public Enumeration<?> children() {
+		return new Enumeration<JXploreFile>() {
+
+			int index = 0;
+
+			@Override
+			public boolean hasMoreElements() {
+				return index < getSubFolders().length;
+			}
+
+			@Override
+			public JXploreFile nextElement() {
+				return getSubFolders()[index++];
+			}
+
+		};
 	}
 
 	@Override
 	public boolean getAllowsChildren() {
-		// always allow children for now
-		return true;
+			return !this.isFile();
+	}
+
+		public boolean isFile() {
+			return file.isFile();
 	}
 
 	@Override
 	public TreeNode getChildAt(int arg0) {
-		TreeNode x = getSubFiles()[arg0];
-		return x;
+		return getSubFolders()[arg0];
 	}
 
 	@Override
 	public int getChildCount() {
-		int i = getSubFiles().length;
-		return i;
+		return getSubFolders().length;
 	}
 
 	@Override
 	public int getIndex(TreeNode arg0) {
-		return 0;
+		JXploreFile[] folders = getSubFolders();
+		for (int n = 0; n < folders.length; n++) {
+			if (folders[n].equals(arg0)){
+				return n;
+			}
+		}
+		return -1;
 	}
 
 	@Override
 	public TreeNode getParent() {
-		// TODO Auto-generated method stub
-		return null;
+		if (file.getParentFile() == null)
+			return null;
+		return new JXploreFile(file.getParentFile());
 	}
 
 	@Override

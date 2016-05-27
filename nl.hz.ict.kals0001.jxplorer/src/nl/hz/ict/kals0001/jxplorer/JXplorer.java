@@ -42,6 +42,7 @@ public class JXplorer {
 	public void buildGUI()
 	{
 		mainFrame = new JFrame();
+		//mainFrame.setIconImage();
 		updateGUI();
 	}
 	
