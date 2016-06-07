@@ -1,6 +1,8 @@
 package nl.hz.ict.kals0001.jxplorer;
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -12,6 +14,7 @@ public class JXplorer {
 	private JFrame mainFrame;
 	private JPanel contentPanel;
 	private JSplitPane splitPane;
+	private ArrayList<JXploreView> views = new ArrayList<JXploreView>();
 	
 	public JXplorer()
 	{
@@ -36,45 +39,33 @@ public class JXplorer {
 		
 	public void setCurrentFile(JXploreFile newFile) 
 	{
-		currentFile = newFile;
+		if (newFile != currentFile){
+			currentFile = newFile;
+			updateGUI();
+		}
 	}
 	
 	public void buildGUI()
 	{
-		mainFrame = new JFrame();
-		//mainFrame.setIconImage();
-		updateGUI();
-	}
-	
-	public void updateGUI()
-	{
+		mainFrame = new JFrame("JXplorer, find your files");
+		ImageIcon img = new ImageIcon("C:/Users/Willemijn/Dropbox/persoonlijk/Programmeren 2/Nieuwe map/nl.hz.ict.kals0001.jxplorer/src/nl/hz/ict/kals0001/jxplorer/search.jpg");
+		mainFrame.setIconImage(img.getImage());
+		
 		contentPanel = new JPanel();
 		contentPanel.setLayout(new BorderLayout());
 		
-		//Getting the AdressViewGui + Data
-		JXAddressView adress = new JXAddressView();
-		adress.setData(this);
+		//Creating the views
+		views.add(new JXAddressView(this));
+		views.add(new JXTreeView(this));
+		views.add(new JXListView(this));
+		views.add(new JXStatusView(this));
 		
-		//Getting the ListViewGui + Data
-		JXListView list = new JXListView();
-		list.setData(this);
-		list.createList();
+		updateGUI();
 		
-		//Getting the TreeviewGui + Data
-		JXTreeView tree = new JXTreeView();
-		tree.setData(this);
-		tree.createTree();
-		//todo add methods to create tree.
-		
-		//Getting the StatusViewGUI + Data
-		JXStatusView status = new JXStatusView();
-		status.setData(this);
-		status.createStatus();
-				
 		//Adding the Panels in the BorderLayout
-		contentPanel.add(adress, BorderLayout.NORTH);
-		contentPanel.add(status, BorderLayout.SOUTH);
-		splitPane = new JSplitPane(1, tree, list);
+		contentPanel.add(views.get(0), BorderLayout.NORTH);
+		contentPanel.add(views.get(3), BorderLayout.SOUTH);
+		splitPane = new JSplitPane(1, views.get(1), views.get(2));
 		contentPanel.add(splitPane, BorderLayout.CENTER);
 		
 		//Finishing the GUI
@@ -82,6 +73,13 @@ public class JXplorer {
 		mainFrame.setContentPane(contentPanel);
 		mainFrame.pack();
 		mainFrame.setVisible(true);
+	}
+	
+	public void updateGUI()
+	{
+		for  (JXploreView view:views){
+			view.update();			
+		}	
 	}
 	
 	public void printName(JXploreFile file)

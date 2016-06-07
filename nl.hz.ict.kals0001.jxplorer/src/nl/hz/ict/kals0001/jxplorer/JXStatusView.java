@@ -1,36 +1,32 @@
 package nl.hz.ict.kals0001.jxplorer;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-public class JXStatusView extends JPanel
+public class JXStatusView extends JXploreView
 {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel statusLabel;
-	private JXplorer data;
 	private String text;
 	
-	public JXStatusView()
+	public JXStatusView(JXplorer data)
 	{
+		setData(data);
 		statusLabel = new JLabel("");
 		this.add(statusLabel);
+		createStatus();
 	}
 	
 	public void createStatus()
 	{
-		text = "Map: "+ data.getCurrentFile().getName();
-		text += ". Number of files: " + data.getCurrentFile().getChildCount();
+		text = "Map: "+ getData().getCurrentFile().getName();
+		text += ". Number of files: " + getData().getCurrentFile().getChildCount();
 		statusLabel.setText(text);
 	}
 	
-	
-	public JXplorer getData()
-	{
-		return data;
+	@Override
+	public void update(){
+		createStatus();
 	}
 	
-	public void setData(JXplorer data)
-	{
-		this.data = data;
-	}
+
 }
