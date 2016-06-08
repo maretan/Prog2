@@ -1,4 +1,5 @@
 package nl.hz.ict.kals0001.jxplorer;
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -22,22 +23,22 @@ public class JXTreeView extends JXploreView implements MouseListener{
 		createTree();
 	}
 	
+	//Setting up the Treeview
 	public void createTree() {
 		fileTree = new JTree();
-		update();
+		fileTree.setModel(new DefaultTreeModel(getData().getCurrentFile()));
 		scrollPane = new JScrollPane(fileTree);
 		renderer = new JXTreeRenderer();
+		this.setLayout(new BorderLayout());
 		this.add(scrollPane);
 		fileTree.setCellRenderer(renderer);
 		fileTree.addMouseListener(this);
 	}
 	
+	//Updating the view
 	@Override
 	public void update(){
-		if (!(getData().getCurrentFile().isFile())) {
-		fileTree.setModel(new DefaultTreeModel(getData().getCurrentFile()));
-		}
-		
+		//There is no need to update the Treeview
 	}
 
 	//Mouselistenerevents
@@ -51,29 +52,26 @@ public class JXTreeView extends JXploreView implements MouseListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 	
-	 public class JXTreeRenderer extends DefaultTreeCellRenderer {
+	//TreeCellRenderer
+	public class JXTreeRenderer extends DefaultTreeCellRenderer {
 
 		  private static final long serialVersionUID = 1L;
 		  

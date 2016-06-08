@@ -10,6 +10,7 @@ abstract class JXploreView extends JPanel {
 		
 	}
 
+	//Getters and setters
 	protected JXplorer getData()
 	{
 		return data;
@@ -20,5 +21,6 @@ abstract class JXploreView extends JPanel {
 		this.data = data;
 	}
 	
+	//Defining method to update the views
 	abstract void update();
 }

@@ -26,14 +26,15 @@ public class JXAddressView extends JXploreView implements ActionListener
 		this.add(goButton);
 	}
 	
-	
-	public void actionPerformed(ActionEvent e) //TODO: exceptions
+	//ActionListener
+	public void actionPerformed(ActionEvent e)
 	{
 		String t = addressTextField.getText();
 		JXploreFile file = new JXploreFile(t);
 		getData().setCurrentFile(file);
 	}
 	
+	//Updating the view
 	@Override
 	public void update(){
 		addressTextField.setText(getData().getCurrentFile().getPath());

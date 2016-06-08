@@ -16,6 +16,7 @@ public class JXStatusView extends JXploreView
 		createStatus();
 	}
 	
+	//Creating the satustmessage shown
 	public void createStatus()
 	{
 		text = "Map: "+ getData().getCurrentFile().getName();
@@ -23,6 +24,7 @@ public class JXStatusView extends JXploreView
 		statusLabel.setText(text);
 	}
 	
+	//Updating the view
 	@Override
 	public void update(){
 		createStatus();

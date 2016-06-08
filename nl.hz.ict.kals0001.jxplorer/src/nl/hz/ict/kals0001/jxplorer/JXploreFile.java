@@ -9,6 +9,7 @@ import javax.swing.tree.TreeNode;
 public class JXploreFile implements TreeNode {
 	
 	private File file;
+	private JXploreFile[] foldersCache;
 	
 	public JXploreFile()
 	{
@@ -23,6 +24,17 @@ public class JXploreFile implements TreeNode {
 	public JXploreFile(File file)
 	{
 		this.file = file;
+	}
+	
+	
+	//Getters and Setters
+	public File getFile() {
+		initCache();
+		return file;
+	}
+	
+	public JXploreFile[] getCache() {
+		return foldersCache;
 	}
 	
 	public String getName()
@@ -41,7 +53,7 @@ public class JXploreFile implements TreeNode {
 		return i;
 	}
 	
-
+	//Get all the files from a Folder
 	public JXploreFile[] getSubFiles()
 	{
 		JXploreFile[] subFiles;
@@ -63,6 +75,7 @@ public class JXploreFile implements TreeNode {
 		return subFiles;
 	}
 	
+	//Get all the folders from a folder
 	public JXploreFile[] getSubFolders()
 	{
 		JXploreFile[] subFolders;
@@ -94,7 +107,21 @@ public class JXploreFile implements TreeNode {
 		}
 		return subFolders;	
 	}
+	
+	//Initialise the cache
+	private void initCache() {
+		foldersCache = makeFiles(FileSystemView.getFileSystemView().getFiles(file, false));
+	}
+	
+	private JXploreFile[] makeFiles(File[] input) {
+		JXploreFile[] output = new JXploreFile[input.length];
+		for (int i = 0; i < input.length; i++) {
+			output[i] = new JXploreFile(input[i]);
+		}
+		return output;
+	}
 
+	//Treenode Implementation
 	@Override
 	public Enumeration<?> children() {
 		return new Enumeration<JXploreFile>() {

@@ -26,6 +26,7 @@ public class JXplorer {
 		currentFile = file;
 	}
 	
+	//Starting te application
 	public static void main(String[] args)
 	{
 		JXplorer jxplorer = new JXplorer();
@@ -39,12 +40,13 @@ public class JXplorer {
 		
 	public void setCurrentFile(JXploreFile newFile) 
 	{
-		if (newFile != currentFile){
+		if (newFile != null && newFile!= currentFile){
 			currentFile = newFile;
 			updateGUI();
 		}
 	}
 	
+	//Initialising the GUI
 	public void buildGUI()
 	{
 		mainFrame = new JFrame("JXplorer, find your files");
@@ -75,18 +77,15 @@ public class JXplorer {
 		mainFrame.setVisible(true);
 	}
 	
-	public void updateGUI()
+	//Updating the GUI
+	private void updateGUI()
 	{
 		for  (JXploreView view:views){
 			view.update();			
 		}	
 	}
 	
-	public void printName(JXploreFile file)
-	{
-		System.out.println(currentFile.getName());
-	}
-	
+	//Getting all the files in a folder
 	public void printSubFiles(JXploreFile file)
 	{
 		JXploreFile[] subFiles = currentFile.getSubFiles();
@@ -105,6 +104,7 @@ public class JXplorer {
 		}
 	}
 	
+	//Getting all the folders in a folder
 	public void printSubFolders(JXploreFile file)
 	{
 		JXploreFile[] subFolders = currentFile.getSubFolders();

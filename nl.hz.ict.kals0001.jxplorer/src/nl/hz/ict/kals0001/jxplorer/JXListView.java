@@ -1,4 +1,5 @@
 package nl.hz.ict.kals0001.jxplorer;
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -20,16 +21,19 @@ public class JXListView extends JXploreView implements MouseListener{
 		fileList = new JList<JXploreFile>();
 		scrollPane = new JScrollPane(fileList);
 		renderer = new JXListCellRenderer();
+		this.setLayout(new BorderLayout());
 		this.add(scrollPane);
+		fileList.setCellRenderer(renderer);
+		fileList.addMouseListener(this);
 		createList();
 	}
 	
+	//Filling the list with all the files
 	public void createList() {
 		fileList.setListData(getData().getCurrentFile().getSubFiles());
-		fileList.setCellRenderer(renderer);
-		fileList.addMouseListener(this);
 	}
 	
+	//Updating the view
 	@Override
 	public void update(){
 		createList();
@@ -46,29 +50,26 @@ public class JXListView extends JXploreView implements MouseListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+			
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 	
-	 public class JXListCellRenderer extends DefaultListCellRenderer {
+	//ListCellRenderer 
+	public class JXListCellRenderer extends DefaultListCellRenderer {
 
 		  private static final long serialVersionUID = 1L;
 
@@ -89,7 +90,4 @@ public class JXListView extends JXploreView implements MouseListener{
 		  }
 
 		 }
-
-
-	
 }
