@@ -29,7 +29,6 @@ public class JXploreFile implements TreeNode {
 	
 	//Getters and Setters
 	public File getFile() {
-		initCache();
 		return file;
 	}
 	
@@ -157,6 +156,9 @@ public class JXploreFile implements TreeNode {
 
 	@Override
 	public int getChildCount() {
+		if (foldersCache == null){
+			initCache();
+		}
 		return getSubFolders().length;
 	}
 
